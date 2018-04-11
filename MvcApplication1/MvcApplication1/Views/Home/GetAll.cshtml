@@ -1,0 +1,53 @@
+﻿@using MvcApplication1.Models
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "GetAll";
+}
+<style>
+    .td{
+        padding:10px;
+        text-align:center;
+        border:1px solid black;
+    }
+    .th{
+        border:1px solid black;
+        padding:10px;
+        text-align:center
+    }
+</style>
+
+<h2>GetAll</h2>
+@using (Html.BeginForm("GetAll", "Home"))
+{
+    <table style="border:1px solid black">
+        <tr>
+            <th class="th">Item</th>
+            <th class="th">Supplier</th>
+            <th class="th">ContactPerson</th>
+            <th class="th">Country</th>
+        </tr>
+        @foreach (Product obj in Model)
+        {
+            <tr>
+                
+                <td class="td">@obj.item</td>
+                <td class="td" >@obj.suplier</td>
+                <td class="td">@obj.contactPerson</td>
+                <td class="td">@obj.country</td>
+            </tr>
+        }
+    </table>
+    <hr />
+
+    <div>
+        <!--<input type="button" id="btndisplay" value="ItemEdit" onclick="location.href='@Url.Action("Edit", "Home")"  />-->
+        <a href="@Url.Action("Edit","Home")">ItemUpdate</a>
+    </div><hr />
+
+}
+
+<div id="updateview">
+
+</div>
+
+
